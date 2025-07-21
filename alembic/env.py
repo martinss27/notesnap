@@ -3,7 +3,7 @@ from logging.config import fileConfig
 import sys
 import os
 
-from database import Base
+from app.database import Base
 from models.user import User
 
 from sqlalchemy import engine_from_config
