@@ -1,9 +1,9 @@
 from sqlalchemy.orm import Session
 from app.models.user import User
-from app.auth.security import hash_password, verify_password
+from app.auth.security import hashed_password, verify_password
 
 def create_user(db: Session, email: str, password: str) -> User:
-    hashed_pw = hash_password(password)
+    hashed_pw = hashed_password(password)
     db_user = User(email=email, hashed_password=hashed_pw)
     db.add(db_user)
     db.commit()
@@ -18,6 +18,6 @@ def authenticate_user(db: Session, email: str, password: str):
     if not user:
         return None
     
-    if not verify_password(password, user.hash_password):
+    if not verify_password(password, user.hashed_password):
         return None
     return user
