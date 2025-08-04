@@ -1,18 +1,6 @@
 from pydantic import BaseModel
 from typing import List, Optional
-
-class ExcerptBase(BaseModel):
-    text: str
-    thoughts: Optional[str] = None
-
-class ExcerptCreate(ExcerptBase):
-    pass
-
-class ExcerptOut(ExcerptBase):
-    id: int
-
-    class Config:
-        orm_mode = True
+from app.schemas.chapter import ChapterOut
 
 class BookBase(BaseModel):
     title: str
@@ -20,11 +8,11 @@ class BookBase(BaseModel):
     description: Optional[str] = None
 
 class BookCreate(BookBase):
-    excerpts: List[ExcerptCreate] = []
+    pass
 
 class BookOut(BookBase):
     id: int
-    excerpts: List[ExcerptOut] = []
+    excerpts: List[ChapterOut] = []
 
     class Config:
         orm_mode = True
