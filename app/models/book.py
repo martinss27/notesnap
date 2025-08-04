@@ -13,3 +13,4 @@ class Book(Base):
 
     excerpts = relationship("Excerpt", back_populates="book", cascade="all, delete-orphan")
     user = relationship("User", back_populates="books")
+    chapters = relationship("Chapter", back_populates="book", cascade="all, delete-orphan")
