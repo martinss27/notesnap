@@ -13,5 +13,5 @@ def create_book(db: Session, book_data, user_id: int):
     db.refresh(db_book)
     return db_book
 
-def get_Book(db: Session, user_id: int):
+def get_books(db: Session, user_id: int):
     return db.query(Book).filter(Book.user_id == user_id).all()
