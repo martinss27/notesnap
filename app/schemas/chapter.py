@@ -9,6 +9,7 @@ class ChapterCreate(ChapterBase):
 
 class ChapterOut(ChapterBase):
     id: int
+    excerpts: List[int] = [] 
 
     class Config:
         orm_mode = True

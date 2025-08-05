@@ -12,7 +12,7 @@ class BookCreate(BookBase):
 
 class BookOut(BookBase):
     id: int
-    excerpts: List[ChapterOut] = []
+    chapters: List[ChapterOut] = []
 
     class Config:
         orm_mode = True
