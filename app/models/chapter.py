@@ -8,6 +8,5 @@ class Chapter(Base):
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, nullable=False)
     book_id = Column(Integer, ForeignKey("books.id"), nullable=False)
-
     book = relationship("Book", back_populates="chapters")
     excerpts = relationship("Excerpt", back_populates="chapter", cascade="all, delete-orphan")

@@ -10,11 +10,15 @@ router = APIRouter()
 
 
 @router.post("/books", response_model=BookOut, status_code=status.HTTP_201_CREATED)
-def create_new_book(book: BookCreate, db: Session = Depends(get_db)):
-    return create_book(db, book, book.user_id)
+def create_new_book(book: BookCreate, 
+                    db: Session = Depends(get_db),
+                    current_user=Depends(get_current_user)
+                    ):
+    print("authenticated user:", current_user.id)
+    return create_book(db, book, current_user.id)
 
 @router.get("/books", response_model=list[BookOut])
-def list_books(db: Session = Depends(get_db), user_id: int = None):
-    if user_id is None:
-        raise HTTPException(status_code=400, detail="user_id is required")
-    return get_books(db, user_id)
+def list_books(db: Session = Depends(get_db),
+                current_user=Depends(get_current_user),
+                ):
+    return get_books(db, current_user.id)

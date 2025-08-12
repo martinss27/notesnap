@@ -4,7 +4,7 @@ import sys
 import os
 
 from app.database import Base
-from models.user import User
+from app.models.user import User
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool

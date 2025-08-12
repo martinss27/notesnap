@@ -8,7 +8,7 @@ class Book(Base):
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, index=True, nullable=False)
     author = Column(String, index=True, nullable=False)
-    description = Column(Text)
+    description = Column(Text, nullable=True)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
 
     excerpts = relationship("Excerpt", back_populates="book", cascade="all, delete-orphan")

@@ -8,7 +8,7 @@ class BookBase(BaseModel):
     description: Optional[str] = None
 
 class BookCreate(BookBase):
-    user_id: int
+    pass
 
 class BookOut(BookBase):
     id: int
